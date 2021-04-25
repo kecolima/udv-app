@@ -4,28 +4,25 @@
 @section('content')
 
 <div class="col-md-10 offset-md-1 dashboard-tittle-container">
-    Dashboard
+<h3>Dashboard</h3>
 </div>
 <div class="col-md-10 offset-md-1 dashboard-events-container">
     <hr>
     <p>
-        total de Departamentos:
+        total de Departamentos: <h3>{{count($departamentos)}}</h3>
     </p>
-    {{$departamentos}}
 </div>
 <div class="col-md-10 offset-md-1 dashboard-events-container">
     <hr>
     <p>
-        total de Cargos:
+        total de Cargos: <h3>{{count($cargos)}}</h3>
     </p>
-    {{$cargos}}
 </div>
 <div class="col-md-10 offset-md-1 dashboard-events-container">
     <hr>
     <p>
-        total de Funcionários:
+        total de Funcionários: <h3>{{count($funcionarios)}}</h3>
     </p>
-    {{$funcionarios}}
 </div>
 <div class="col-md-10 offset-md-1 dashboard-events-container">
     <hr>

@@ -4,6 +4,9 @@
             <a class="navbar-brand" href="/"><img alt="UDV" src="{{url(mix('site/img/udv.png'))}}" class="img-responsive"></a>
         </div>
         <ul class="nav navbar-nav">
+        <li class="nav-item">
+                <a class="nav-link" href="/painel">HOME</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/usuario/ver">USUÁRIO</a>
             </li>
