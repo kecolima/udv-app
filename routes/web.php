@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('site/home');
 });
 
-Route::get('/painel', "PainelController@ver");
+Route::post('/login', "AuthController@logar")->name('logar_usuario');
+
+Route::get('/painel', "PainelController@ver")->name('mostrar_painel');
 
 Route::get('/usuario/novo', "UsuariosController@create");
 Route::post('/usuario/novo', "UsuariosController@store")->name('salvar_usuario');

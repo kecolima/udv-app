@@ -10,9 +10,4 @@ class Funcionario extends Model
     use HasFactory;
     protected $fillable = ['nome','dataNascimento','sexo','dataNascimento','senha','email','salario',
                            'enderecos','telefones','cargo','categoria','situacao'];
-
-
-
-
-
 }

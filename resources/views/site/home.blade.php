@@ -2,6 +2,7 @@
     <head>
         @include('site.head')
     </head>
+    @hasSection('content')
     <header>
         @include('site.header')
     </header>
@@ -12,12 +13,15 @@
         <div class="">
 
         </div>
-        <div class="">
-
-        </div>
     </body>
-    <footer class="bg-light text-center text-lg-start fixed-bottom">
+    <footer class="bg-light text-center text-lg-start ">
         @include('site.footer')
     </footer>
+    @else
+        @include('site.login')
+    @endif
 </html>
+
+
+
 
