@@ -1,4 +1,4 @@
-    <meta charset="UTF-8">
+    <meta name="viewport"  content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>APP-UDV</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url(mix('site/css/style.css'))}}">

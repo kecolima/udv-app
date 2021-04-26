@@ -25,10 +25,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-                <a class="navbar-brand" href="#">Registrar-se</a>
-            </li>
-            <li class="nav-item">
-                <a class="navbar-brand" href="#">Entrar</a>
+                <a class="navbar-brand" href="#">Logout</a>
             </li>
         </ul>
     </div>

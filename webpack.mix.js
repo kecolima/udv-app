@@ -16,6 +16,10 @@ mix.styles([
     ], 'public/site/css/style.css')
 
     .scripts([
+        'resources/views/site/css/login.css'
+    ], 'public/site/css/login.css')
+
+    .scripts([
         'resources/views/site/js/script.js'
     ], 'public/site/js/script.js')
 
