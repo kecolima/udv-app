@@ -19,7 +19,7 @@ class DepartamentosController extends Controller
             'nome' => $request->nome,
             'telefones' => $request->telefones,
         ]);
-        return "Departamento Salvo!";
+        return redirect()->route('ver_departamento');
     }
 
     public function show(Request $request){
@@ -37,7 +37,7 @@ class DepartamentosController extends Controller
     public function destroy($id){
         $departamento = Departamento::findOrFail($id);
         $departamento->delete();
-        return 'Excluido';
+        return redirect()->route('ver_departamento');
     }
 
     public function edit($id){
@@ -51,6 +51,6 @@ class DepartamentosController extends Controller
             'nome' => $request->nome,
             'telefones' => $request->telefones,
         ]);
-        return "Departamento Atualizado!";
+        return redirect()->route('ver_departamento');
     }
 }

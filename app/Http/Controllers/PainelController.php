@@ -67,7 +67,7 @@ class PainelController extends Controller
             'email' => $request->email,
             'senha' => $request->senha,
         ]);
-        return "Painel Salvo!";
+        return redirect()->route('ver_painel');
     }
 
     public function show(Request $request){
@@ -78,7 +78,7 @@ class PainelController extends Controller
     public function destroy($id){
         $painel = Painel::findOrFail($id);
         $painel->delete();
-        return 'Excluido';
+        return redirect()->route('ver_painel');
     }
 
     public function edit($id){
@@ -95,6 +95,6 @@ class PainelController extends Controller
             'email' => $request->email,
             'senha' => $request->senha,
         ]);
-        return "Painel Atualizado!";
+        return redirect()->route('ver_painel');
     }
 }

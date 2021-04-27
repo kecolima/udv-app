@@ -28,7 +28,7 @@ class FuncionariosController extends Controller
             'categoria' => $request->categoria,
             'situacao' => $request->situacao,
         ]);
-        return 'Funcionario Salvo!';
+        return redirect()->route('ver_funcionario');
     }
 
     public function show(Request $request){
@@ -43,7 +43,7 @@ class FuncionariosController extends Controller
     public function destroy($id){
         $funcionario = Funcionario::findOrFail($id);
         $funcionario->delete();
-        return 'Excluido';
+        return redirect()->route('ver_funcionario');
     }
 
     public function edit($id){
@@ -66,6 +66,6 @@ class FuncionariosController extends Controller
             'categoria' => $request->categoria,
             'situacao' => $request->situacao,
         ]);
-        return "Funcionario Atualizado!";
+        return redirect()->route('ver_funcionario');
     }
 }

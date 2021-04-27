@@ -18,7 +18,7 @@ class UsuariosController extends Controller
             'email' => $request->email,
             'senha' => $request->senha,
         ]);
-        return "Usuario Salvo!";
+        return redirect()->route('ver_usuario');
     }
 
     public function show(Request $request){
@@ -29,7 +29,7 @@ class UsuariosController extends Controller
     public function destroy($id){
         $usuario = Usuario::findOrFail($id);
         $usuario->delete();
-        return 'Excluido';
+        return redirect()->route('ver_usuario');
     }
 
     public function edit($id){
@@ -46,6 +46,6 @@ class UsuariosController extends Controller
             'email' => $request->email,
             'senha' => $request->senha,
         ]);
-        return "Usuario Atualizado!";
+        return redirect()->route('ver_usuario');
     }
 }

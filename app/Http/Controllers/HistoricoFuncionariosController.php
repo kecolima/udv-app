@@ -21,7 +21,7 @@ class HistoricoFuncionariosController extends Controller
             'id_funcionario' => $request->id_funcionario,
             'data' => $request->data,
         ]);
-        return "HistoricoFuncionario Salvo!";
+        return redirect()->route('ver_historico_funcionario');
     }
 
     public function show(Request $request){
@@ -36,7 +36,7 @@ class HistoricoFuncionariosController extends Controller
     public function destroy($id){
         $historicoFuncionario = HistoricoFuncionario::findOrFail($id);
         $historicoFuncionario->delete();
-        return 'Excluido';
+        return redirect()->route('ver_historico_funcionario');
     }
 
     public function edit($id){
@@ -52,6 +52,6 @@ class HistoricoFuncionariosController extends Controller
             'id_funcionario' => $request->id_funcionario,
             'data' => $request->data,
         ]);
-        return "HistoricoFuncionario Atualizado!";
+        return redirect()->route('ver_historico_funcionario');
     }
 }

@@ -21,7 +21,7 @@ class CargosController extends Controller
             'departamento' => $request->departamento,
             'salarioBase' => $request->salarioBase,
         ]);
-        return "Cargo Salvo!";
+        return redirect()->route('ver_cargo');
     }
 
     public function show(Request $request){
@@ -39,7 +39,7 @@ class CargosController extends Controller
     public function destroy($id){
         $cargo = Cargo::findOrFail($id);
         $cargo->delete();
-        return 'Excluido';
+        return redirect()->route('ver_cargo');
     }
 
     public function edit($id){
@@ -54,6 +54,6 @@ class CargosController extends Controller
             'departamento' => $request->departamento,
             'salarioBase' => $request->salarioBase,
         ]);
-        return "Cargo Atualizado!";
+        return redirect()->route('ver_cargo');
     }
 }
