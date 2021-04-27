@@ -51,6 +51,18 @@
     </div>
   </div>
 </div>
+@foreach($historicoFuncionarios as $historicoFuncionario)
+        @php
+            $nome[$historicoFuncionario->id] = '';
+        @endphp
+        @foreach($total_funcionarios as $total_funcionario)
+            @if  ($total_funcionario->funcionariosId == $historicoFuncionario->id_funcionario)
+                @php
+                    $nome[$historicoFuncionario->id] = $total_funcionario->Funcionario;
+                @endphp
+            @endif
+        @endforeach
+    @endforeach
 <div class="col-md-10 offset-md-1 dashboard-events-container">
     <hr>
         <p>
@@ -67,7 +79,7 @@
         </thead>
         @foreach($historicoFuncionarios as $historicoFuncionario)
             <tr>
-                <td>{{$historicoFuncionario->id_funcionario}}</td>
+                <td>{{$nome[$historicoFuncionario->id]}}</td>
                 <td>{{$historicoFuncionario->tipoHistorico}}</td>
                 <td>{{$historicoFuncionario->descricao}}</td>
                 <td>{{$historicoFuncionario->data}}</td>
@@ -75,7 +87,5 @@
         @endforeach
     </table>
 </div>
-
-
 
 @endsection

@@ -32,13 +32,19 @@ class PainelController extends Controller
 
         $historicoFuncionarios = DB::table('historico_funcionarios')->limit(5)->orderBy('id', 'DESC')->get();
 
+        $total_funcionarios = DB::table('historico_funcionarios')
+            ->join('funcionarios', 'historico_funcionarios.id_funcionario', '=', 'funcionarios.id')
+            ->select('funcionarios.nome as Funcionario', 'funcionarios.id as funcionariosId')
+            ->get();
+
         return view('site/dashboard', ['departamentos' => $departamentos, 'cargos' => $cargos,
                                        'funcionarios' => $funcionarios, 'funcionario_ativo' => $funcionario_ativo,
                                        'funcionario_inativo' => $funcionario_inativo, 'funcionario_ferias' => $funcionario_ferias,
                                        'funcionari_aposentado' => $funcionari_aposentado,'funcionario_treinee' => $funcionario_treinee,
                                        'funcionario_junior' => $funcionario_junior, 'funcionario_pleno' => $funcionario_pleno,
                                        'funcionario_senior' => $funcionario_senior, 'funcionario_master' => $funcionario_master,
-                                       'funcionario_salario_total' => $funcionario_salario_total, 'historicoFuncionarios' => $historicoFuncionarios
+                                       'funcionario_salario_total' => $funcionario_salario_total, 'historicoFuncionarios' => $historicoFuncionarios,
+                                       'total_funcionarios' => $total_funcionarios
                                        ]);
     }
 
