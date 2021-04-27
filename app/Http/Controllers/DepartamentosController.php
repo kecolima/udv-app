@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Cargo;
 use App\Models\Departamento;
+use App\Models\Funcionario;
 
 class DepartamentosController extends Controller
 {
@@ -21,7 +24,14 @@ class DepartamentosController extends Controller
 
     public function show(Request $request){
         $departamentos = Departamento::all();
-        return view('departamentos.todos', ['departamentos' => $departamentos]);
+        $total_funcionarios = DB::table('cargos')
+            ->join('funcionarios', 'cargos.id', '=', 'funcionarios.cargo')
+            ->join('departamentos', 'cargos.departamento', '=', 'departamentos.id')
+            ->select('funcionarios.cargo as Funcionario', 'cargos.id as Id','cargos.nome as Cargo',
+            'cargos.salarioBase as SalarioBase', 'cargos.departamento as DepartamentoId',
+            'funcionarios.salario as SalarioFuncionario', 'departamentos.nome as Departamento')
+            ->get();
+        return view('departamentos.todos', ['departamentos' => $departamentos, 'total_funcionarios' => $total_funcionarios]);
     }
 
     public function destroy($id){

@@ -15,6 +15,19 @@
 	</div>
 @endif
 
+@foreach($historicoFuncionarios as $historicoFuncionario)
+        @php
+            $nome[$historicoFuncionario->id] = '';
+        @endphp
+        @foreach($total_funcionarios as $total_funcionario)
+            @if  ($total_funcionario->funcionariosId == $historicoFuncionario->id_funcionario)
+                @php
+                    $nome[$historicoFuncionario->id] = $total_funcionario->Funcionario;
+                @endphp
+            @endif
+        @endforeach
+    @endforeach
+
 <a class="btn btn-small btn-primary" href="{{ action("HistoricoFuncionariosController@create") }}">Cadastrar</a>
     <hr>
     <table width="100%" class="table table-striped table-hover">
@@ -30,7 +43,7 @@
         </thead>
         @foreach($historicoFuncionarios as $historicoFuncionario)
             <tr>
-                <td>{{$historicoFuncionario->id_funcionario}}</td>
+                <td>{{$nome[$historicoFuncionario->id]}}</td>
                 <td>{{$historicoFuncionario->tipoHistorico}}</td>
                 <td>{{$historicoFuncionario->descricao}}</td>
                 <td>{{$historicoFuncionario->data}}</td>

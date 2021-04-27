@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Funcionario;
 use App\Models\Cargo;
@@ -32,7 +33,11 @@ class FuncionariosController extends Controller
 
     public function show(Request $request){
         $funcionarios = Funcionario::all();
-        return view('funcionarios.todos', ['funcionarios' => $funcionarios]);
+        $total_funcionarios = DB::table('funcionarios')
+            ->join('cargos', 'funcionarios.cargo', '=', 'cargos.id')
+            ->select('funcionarios.id as Id', 'cargos.nome as Nome')
+            ->get();
+        return view('funcionarios.todos', ['funcionarios' => $funcionarios, 'total_funcionarios' => $total_funcionarios]);
     }
 
     public function destroy($id){

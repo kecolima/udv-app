@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\HistoricoFuncionario;
 use App\Models\Funcionario;
@@ -25,7 +26,11 @@ class HistoricoFuncionariosController extends Controller
 
     public function show(Request $request){
         $historicoFuncionarios = HistoricoFuncionario::all();
-        return view('historicoFuncionarios.todos', ['historicoFuncionarios' => $historicoFuncionarios]);
+        $total_funcionarios = DB::table('historico_funcionarios')
+            ->join('funcionarios', 'historico_funcionarios.id_funcionario', '=', 'funcionarios.id')
+            ->select('funcionarios.nome as Funcionario', 'funcionarios.id as funcionariosId')
+            ->get();
+        return view('historicoFuncionarios.todos', ['historicoFuncionarios' => $historicoFuncionarios, 'total_funcionarios' => $total_funcionarios]);
     }
 
     public function destroy($id){
